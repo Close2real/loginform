@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@Config/*": ["./@front/Config/*"],
+      "@Store/*": ["./@front/Store/*"],
+      "@AppAssets/*": ["./@front/Assets/*"],
+      "@AppCss/*": ["./@front/Assets/css/*"],
+      "@AppImages/*": ["./@front/Assets/images/*"],
+      "@AppIcons/*": ["./@front/Assets/icons/*"],
+      "@Components/*": ["./@front/Components/*"],
+      "@Pages/*": ["./@front/Pages/*"],
+      "@Utils/*": ["./@front/Utils/*"],
+      "@Services/*": ["./@front/Utils/services/*"],
+      "@Models/*": ["./@front/Utils/models/*"]
+    }
+  }
+}

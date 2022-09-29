@@ -1,0 +1,30 @@
+parameters:
+    locale: 'it'
+    site_name: 'Mediolanum ForYou Rewarding CC'
+    base_sj3_esb: '%env(resolve:BASE_SJ3_ESB)%'
+    base_sj3_service: '%env(resolve:BASE_SJ3_SERVICE)%'
+    base_api: '%env(resolve:BASE_API)%'
+    base_wso2: '%env(resolve:BASE_WSO2)%'
+    env: '%env(SJ3_ENV)%'
+    cookie_prefix: "__Host-%env%_bmedcc"
+    cookie_suffix: '__Host-%env%_bmedcc'
+
+    job_id: 446587
+    project_id: 7042
+    cd_client: 77222
+
+    # jk logger
+    app_name: 'bmedcc'
+    applog: 'fe-php'
+    log_env: '%env(resolve:JK_LOG_ENV)%'
+    server: php
+    farm: bmedcc
+
+    # aws
+    aws_env: '%env(AWS_ENV)%'
+    aws_job_id: 446587
+    aws_s3_path: "%aws_job_id%/%aws_env%"
+    aws_key: '%env(AWS_KEY)%'
+    aws_secret: '%env(AWS_SECRET)%'
+    private_bucket_id: 'sj-solutions'
+    public_bucket_id: 'sj-solutions'
