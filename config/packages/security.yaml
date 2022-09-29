@@ -15,7 +15,7 @@ security:
                 - App\Security\LoginFormAuthenticator
             logout:
                 path: app.logout
-                target: app.loginForm
+                target: app.login
 
     access_control:
         - { path: ^/login|^/unauthorized, roles: PUBLIC_ACCESS }

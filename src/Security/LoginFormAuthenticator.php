@@ -60,23 +60,25 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     public function authenticate(Request $request): Passport
     {
         /** @var LoginRequest $requestParameters */
-//        $requestParameters = self::parseObjectToType($request->request->all(), LoginRequest::class);
-//        $validationViolations = $this->validator->validate($requestParameters);
-//        if ($validationViolations->count() > 0) {
-//            throw new InvalidLoginRequestException($validationViolations);
-//        }
-//        $userBadge = new UserBadge($requestParameters->getUsername(), function ($userIdentifier) {
-//            return self::fetchUser($userIdentifier);
-//        });
-//
-//        $credentialsBadge = new CustomCredentials(function ($credentials, User $user) {
-//            return self::checkCredentials($credentials, $user);
-//        }, $requestParameters->getPassword());
+        $requestParameters = self::parseObjectToType($request->request->all(), LoginRequest::class);
+        $validationViolations = $this->validator->validate($requestParameters);
+        if ($validationViolations->count() > 0) {
+            throw new InvalidLoginRequestException($validationViolations);
+        }
+        $userBadge = new UserBadge($requestParameters->getUsername(), function ($userIdentifier) {
+            return self::fetchUser($userIdentifier);
+        });
+
+        $credentialsBadge = new CustomCredentials(function ($credentials, User $user) {
+            return self::checkCredentials($credentials, $user);
+        }, $requestParameters->getPassword());
         return new Passport(
-            new UserBadge("abcd@efgh.lv"),
+            new UserBadge("abcd@efgh.lv", function (string $userIdentifier) {
+                return new User('abc','efg','hij','ROLE_USER', 'abcdefg');
+            }),
             new CustomCredentials(function() {return true;},'abcdefg')
         );
-//        return new Passport($userBadge, $credentialsBadge);
+        return new Passport($userBadge, $credentialsBadge);
     }
 
     public function supports(Request $request): bool

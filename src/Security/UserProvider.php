@@ -74,10 +74,11 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
      */
     public function refreshUser(UserInterface $user): UserInterface
     {
-//        if (!$user instanceof User) {
-//            throw new UnsupportedUserException(sprintf('Invalid user class "%s".', get_class($user)));
-//        }
-        return new User("ab",'ad','ds','ROLE_USER', 'abcdefv');
+        if (!$user instanceof User) {
+            throw new UnsupportedUserException(sprintf('Invalid user class "%s".', get_class($user)));
+        }
+
+        return $user;
     }
 
     /**
